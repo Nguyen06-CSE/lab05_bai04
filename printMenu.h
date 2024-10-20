@@ -20,9 +20,8 @@ void print() {
         << "2. chen phan tu x vao sau phan tu lon nhat (dau tien tim duoc) trong mang \n"
         << "3. chen phan tu x vao so NT dau tien trong mang \n"
         << "4. chen phan tu x vao mang a sao cho do chenh lech giua tong cac phan tu ben trai va ben phai la nho nhat  \n"
-        << "5. cac so le o dau mang va tang dan, cac so chan nam cuoi mang va giam dan\n"
-        << "6. chen phan tu x vao sau moi phan tu y cho truoc, Neu mang ko chua y thi chen tai vi tri 0 \n"
-        << "7. thay the phan tu y boi phan tu x cho truoc\n"
+        << "5. chen phan tu x vao sau moi phan tu y cho truoc, Neu mang ko chua y thi chen tai vi tri 0 \n"
+        << "6. thay the phan tu y boi phan tu x cho truoc\n"
         << "==================================================================================================================\n \n";
 
 }

@@ -30,8 +30,8 @@ int chenVaoTruocSoNT(DaySo a, int n, int x);
 int tinhTong(DaySo a, int start, int end);
 int doChenhLechNhoNhat(DaySo a, int n);
 int chenPhanTuXOGiua(DaySo a, int n, int x);
-
-
+int chenXVaoTruocY(DaySo a, int n, int x, int y);
+int thayTheYVaoX(DaySo a, int n, int x, int y);
 
 
 
@@ -43,7 +43,7 @@ int chenPhanTuXOGiua(DaySo a, int n, int x);
 
 
 void choiseMenu(DaySo a, int choise) {
-    int n, TD, dau;
+    int n, TD, dau, y, dem;
     int x;
     cout << "hay nhap so x de thuc hien cac chuc nang: ";
     cin >> x;
@@ -187,6 +187,82 @@ void choiseMenu(DaySo a, int choise) {
             cin >> n;
             nhapMang(a, n);
             cout << "\nvi tri ma x se chen vao la" << chenPhanTuXOGiua(a, n, x) << " va so " << x << " se duoc chen vao mang nhu sau : \n";
+            xuatMang(a, n );
+        }
+
+        break;
+
+        case 5:
+
+        
+        cout << "hay nhap so y: ";
+        cin >> y;
+        cout << "Ban co muon tao mang tu dong khong? (Neu co bam 1, neu khong bam 0 de tiep tuc): ";
+        cin >> TD;
+
+        if (TD == 1) {
+            cout << "so ngau nhien cua ban muon co so am va duong hay chi duy nhat so duong(am va duong nham 2, duy nhat duong nhan 1): ";
+            cin >> dau;
+            int phanTu, dem;
+            if (dau == 1) {
+                phanTu = randNumPo(a);
+
+            }
+            else {
+                phanTu = randNumPoAndNe(a);
+
+            }
+            dem = chenXVaoTruocY(a, phanTu, x, y);
+            cout << "\nso luong so " << y << " trong mang la " << dem << " va so " << x << " se duoc chen vao mang nhu sau : \n";
+            cout << endl;
+            xuatMang(a, phanTu + dem );
+
+
+        }
+        else {
+            cout << "nguoi dung hay nhap so n: ";
+            cin >> n;
+            nhapMang(a, n);
+           dem = chenXVaoTruocY(a, n, x, y);
+            cout << "\nso luong so " << y << " trong mang la " << dem << " va so " << x << " se duoc chen vao mang nhu sau : \n";
+            cout << endl;
+            xuatMang(a, n + dem );
+        }
+
+        break;
+
+        case 6:
+
+        cout << "hay nhap so y: ";
+        cin >> y;
+        cout << "Ban co muon tao mang tu dong khong? (Neu co bam 1, neu khong bam 0 de tiep tuc): ";
+        cin >> TD;
+
+        if (TD == 1) {
+            cout << "so ngau nhien cua ban muon co so am va duong hay chi duy nhat so duong(am va duong nham 2, duy nhat duong nhan 1): ";
+            cin >> dau;
+            int phanTu, dem;
+            if (dau == 1) {
+                phanTu = randNumPo(a);
+
+            }
+            else {
+                phanTu = randNumPoAndNe(a);
+
+            }
+            dem = thayTheYVaoX(a, phanTu, x, y);
+            cout << "so " << y << " co " <<  dem << " so trong mang va se bi thay the boi so " << x << " trong mang la: " << "\nso luong so " << y << " trong mang la: \n ";
+            cout << endl;
+            xuatMang(a, phanTu );
+
+
+        }
+        else {
+            cout << "nguoi dung hay nhap so n: ";
+            cin >> n;
+            nhapMang(a, n);
+            dem = thayTheYVaoX(a, n, x, y);
+            cout << "so " << y << " co " <<  dem << " so trong mang va se bi thay the boi so " << x << " trong mang la: " << "\nso luong so " << y << " trong mang la: \n ";
             xuatMang(a, n );
         }
 
@@ -423,6 +499,47 @@ int chenPhanTuXOGiua(DaySo a, int n, int x) {
 
     return viTri + 1;
 }
+
+int chenXVaoTruocY(DaySo a, int n, int x, int y){
+    int dem = 0;
+    int viTri = 0;
+    for(int i = n; i >= 0; i--){
+        if(a[i] == y){
+
+            ++dem;
+            
+            viTri = i;
+            for(int j = n; j >= viTri; j--){
+                a[j] = a[j - 1];
+            }
+
+            a[viTri] = x;
+            ++n;
+            
+        }        
+    }
+    
+    return dem;
+}
+
+int thayTheYVaoX(DaySo a, int n, int x, int y){
+    int dem = 0;
+    int viTri = 0;
+    for(int i = n; i >= 0; i--){
+        if(a[i] == y){
+            a[i] = x;
+        }        
+    }
+    
+    return dem;
+}
+
+    
+
+
+
+
+
 
 
 
